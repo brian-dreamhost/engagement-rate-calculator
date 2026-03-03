@@ -17,6 +17,14 @@ export default function App() {
   const industryData = platformData.industries[industry] || platformData.industries[industryKeys[0]]
   const formulaData = FORMULAS[formula]
 
+  const fillTestData = () => {
+    setPlatform('instagram')
+    setIndustry('retail')
+    setFormula('standard')
+    setInputs({ likes: '842', comments: '67', shares: '34', saves: '125', followers: '12500', reach: '4800' })
+    setResult(null)
+  }
+
   const set = field => e => setInputs(p => ({ ...p, [field]: e.target.value }))
 
   const calculate = () => {
@@ -31,7 +39,7 @@ export default function App() {
 
   return (
     <div className="bg-glow bg-grid min-h-screen">
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-4 py-12">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-galactic">
           <a href="https://seo-tools-tau.vercel.app/" className="text-azure hover:text-white transition-colors">Free Tools</a>
@@ -49,6 +57,16 @@ export default function App() {
           <p className="text-cloudy text-lg max-w-2xl mx-auto">
             Calculate your engagement rate and see how it stacks up against industry benchmarks — with a plain-English explanation of what your score means and 3 specific actions to improve it.
           </p>
+        </div>
+
+        <div className="flex justify-end mb-4">
+          <button
+            type="button"
+            onClick={fillTestData}
+            className="px-3 py-1.5 text-xs font-mono bg-prince/20 text-prince border border-prince/30 rounded hover:bg-prince/30 transition-colors focus:outline-none focus:ring-2 focus:ring-prince focus:ring-offset-2 focus:ring-offset-abyss"
+          >
+            Fill Test Data
+          </button>
         </div>
 
         <div className="flex flex-col gap-6">
